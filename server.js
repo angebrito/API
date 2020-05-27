@@ -33,11 +33,21 @@ server.post('/users', (req, res) => {
 //PUT (EDIÇÂO)
 
 server.put('/users/:index', (req, res ) => {
-    const { index } = req.body;
+    const { index } = req.params;
     const { name } = req.body;
 
     users[index] = name;
 
+    return res.json(users);
+})
+
+//DELETE
+
+server.delete('/users/:index', (req, res) => {
+    const { index } = req.params;
+
+    users.splice(index, 1);
+    
     return res.json(users);
 })
 
