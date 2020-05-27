@@ -6,7 +6,14 @@ server.use(express.json());
 
 //CRUD
 
+//MIDDLEWARES (FUNÇÃO QUE RECEBE OS PARAMETROS E FAZ MODIFICAÇÕES)
+server.use((req, res, next) => {
+    console.log(`Método: ${req.method}`);
+    return next();
+})
+
 //GET
+
 const users = ['Angelica', 'Yusi', 'Freya'];
 
 server.get('/users', (req, res) => {
